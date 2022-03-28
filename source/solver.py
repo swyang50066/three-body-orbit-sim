@@ -1,4 +1,3 @@
-from allvar import *
 from force import drdt, dvdt 
 
 
