@@ -1,7 +1,6 @@
-import numpy as np
-
 from allvar import *
 from force import drdt, dvdt 
+
 
 def integrate_Euler_step(r, v, h):
     """Euler method"""
