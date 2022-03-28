@@ -1,2 +1,2 @@
-# sun-jupiter-earth-orbit
-Three-body Problem: Orbital Motions of Sun-Jupiter-Earth System
+# Orbital Simulation of Sun-Jupiter-Earth System
+This repository is for a toy project of three-body orbital simulation.
