@@ -3,10 +3,11 @@ from force import drdt, dvdt
 
 def integrate_Euler_step(r, v, h):
     """Euler method"""
+
     return (r + h*drdt(r, v), v + h*dvdt(r, v))
 
 
-def integrate_EuleCromer_step(r, v, h):
+def integrate_EulerCromer_step(r, v, h):
     """Euler-Cramer method"""
     v_half = v + 0.5*h*dvdt(r, v)
     r_tot = r + h*drdt(r, v_half)
@@ -24,7 +25,7 @@ def integrate_RungeKutta4th_step(r, v, h):
     kv2 = dvdt(r + 0.5*h*kr1, v + 0.5*h*kv1)
 
     kr3 = drdt(r + 0.5*h*kr2, v + 0.5*h*kv2)
-    kr3 = dvdt(r + 0.5*h*kr2, v + 0.5*h*hv2)
+    kv3 = dvdt(r + 0.5*h*kr2, v + 0.5*h*kv2)
 
     kr4 = drdt(r + h*kr3, v + h*kv3)
     kv4 = dvdt(r + h*kr3, v + h*kv3)
