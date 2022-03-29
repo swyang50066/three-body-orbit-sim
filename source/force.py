@@ -3,9 +3,9 @@ import numpy as np
 from allvar import *
 
 
-def distance(r1, r2):
-    """Return Euclidean distance between positions"""
-    return np.sqrt(np.sum((np.array(r1) - np.array(r2))**2.))
+def _distance(r1, r2):
+    """Return Euclidean _distance between positions"""
+    return np.sqrt(np.sum((r1 - r2)**2.))
 
 
 def drdt(r, v):
@@ -15,7 +15,7 @@ def drdt(r, v):
     :param v: shape: (vx_earth, vy_earth, vx_jupiter, vy_jupiter) 
     :return: velocities
     """
-    return np.array(v)
+    return v
 
 
 def dvdt(r, v, eps=1.e-20):
@@ -27,13 +27,11 @@ def dvdt(r, v, eps=1.e-20):
     :param v: shape: (vx_earth, vy_earth, vx_jupiter, vy_jupiter)
     :return: accelerations
     """
-    r, v = np.array(r), np.array(v)
-    
     # Geometric measurements
     r_se, r_sj, r_ej = r[:2], r[2:], r[2:] - r[:2]
-    dist_se = distance((0, 0), r_se)
-    dist_sj = distance((0, 0), r_sj)
-    dist_ej = distance(r_se, r_sj)
+    dist_se = _distance((0, 0), r_se)
+    dist_sj = _distance((0, 0), r_sj)
+    dist_ej = _distance(r_se, r_sj)
 
     theta_se = np.math.atan(np.abs(r_se[1])/(np.abs(r_se[0]) + eps))
     theta_sj = np.math.atan(np.abs(r_sj[1])/(np.abs(r_sj[0]) + eps))
